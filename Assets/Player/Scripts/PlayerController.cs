@@ -169,7 +169,6 @@ public class PlayerController : MonoBehaviour
     }
     void attack_state()
     {
-        dontMove();
         attack_input();
     }
 
@@ -198,12 +197,17 @@ public class PlayerController : MonoBehaviour
         canAttack = true;
     }
 
-    void changeToParalysed()
+    public void changeToAttack()
+    {
+        estadoJugador = State.ATTACK;
+    }
+
+    public void changeToParalysed()
     {
         estadoJugador = State.PARALYSED;
     }
 
-    void changeToIdle()
+    public void changeToIdle()
     {
         estadoJugador = State.IDLE;
     }
