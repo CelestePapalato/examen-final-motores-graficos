@@ -65,10 +65,7 @@ public class PlayerController : MonoBehaviour
                 attack_state();
                 break;                        
         }
-
-        updateMovementAnimationBlend();
-
-
+        Debug.Log(rb.velocity.magnitude);
     }
 
     private void FixedUpdate()
@@ -129,7 +126,7 @@ public class PlayerController : MonoBehaviour
             vel_excedida *= (1f / suavizadoDesaceleracion) * Time.fixedDeltaTime;
             rb.AddForce(vel_excedida * -1, ForceMode.Acceleration);
         }
-
+        updateMovementAnimationBlend();
     }
 
     void dontMove()
@@ -162,6 +159,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Attack") && canAttack)
         {
             estado = State.ATTACK;
+            Vector3 input_ataque = new Vector3(input_vector.x, 0, input_vector.y);
+            input_ataque = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f) * input_ataque;
             updateAttackAnimation();
         }
     }
@@ -178,17 +177,36 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Dodge") && canDodge)
         {
             Vector2 _input_rodar = input_vector.normalized;
-            if (_input_rodar == Vector2.zero)
-            {
-                _input_rodar = Vector2.up;
+            float x;
+            float y;
+
+            // detenemos al rigidbody en los ejes x y
+            Vector3 velocity = Vector3.zero;
+            velocity.y = rb.velocity.y;
+            rb.velocity = velocity;
+
+            Vector3 evade_direction = -cam.transform.forward;
+            evade_direction.y = 0;
+
+            if (_input_rodar != Vector2.zero)
+            {               
+                Vector3 input_rodar = new Vector3(_input_rodar.x, 0, _input_rodar.y);
+                evade_direction = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f) * input_rodar;
             }
-            float x = _input_rodar.x;
-            float y = _input_rodar.y;
-            Vector3 input_rodar = new Vector3(x, 0, y);
-            input_rodar = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f) * input_rodar;
-            rb.AddForce(impulsoEsquive * input_rodar, ForceMode.Impulse);
+            Vector3 forward = transform.forward;
+            forward.y = 0f;
+            float angleBetweenInputAndForward = Vector3.Angle(forward, evade_direction);
+            angleBetweenInputAndForward += 90f;
+            angleBetweenInputAndForward *= Mathf.Deg2Rad;
+            x = Mathf.Cos(angleBetweenInputAndForward);
+            y = Mathf.Sin(angleBetweenInputAndForward);
             updateDodgeAnimation(x, y);
+            rb.AddForce(impulsoEsquive * evade_direction, ForceMode.Impulse);
             StartCoroutine(inhabilitarEsquive());
+
+            // Seteamos el vector en nulo para que el personaje no rote luego de esquivar
+            // si está en el estado IDLE
+            input_vector = Vector2.zero;
         }
     }
 
@@ -247,7 +265,7 @@ public class PlayerController : MonoBehaviour
     public void changeToParalysed()
     {
         estado = State.PARALYSED;
-        canAttack = true;
+        canAttack = false;
         canDodge = true;
     }
 
