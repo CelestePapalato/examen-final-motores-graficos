@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Controles")]
-    [SerializeField]
-    KeyCode ataqueTecladoMouse;
-    [SerializeField]
-    KeyCode ataqueGamepad;
-
     [Header("Movimiento")]
     [SerializeField]
     float aceleracionMovimiento;
@@ -17,6 +11,10 @@ public class PlayerController : MonoBehaviour
     float velocidadMaxima;
     [SerializeField]
     float suavizadoDesaceleracion;
+    [SerializeField]
+    float impulsoEsquive;
+    [SerializeField]
+    float tiempoInhabilitacionEsquive;
     [SerializeField]
     bool ajustarACamara = true;
 
@@ -40,14 +38,15 @@ public class PlayerController : MonoBehaviour
 
     // Estados
     enum State { IDLE, ATTACK, PARALYSED}
-    State estadoJugador;
+    State estado;
 
     // Banderas
     bool canAttack = true;
+    bool canDodge = true;
 
     void Start()
     {
-        estadoJugador = State.IDLE;
+        estado = State.IDLE;
         cam = Camera.main.gameObject;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -56,7 +55,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        switch (estadoJugador)
+        input_movimiento();
+        switch (estado)
         {
             case State.IDLE:
                 idle_state();
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (estadoJugador)
+        switch (estado)
         {
             case State.IDLE:
                 suavizadoRotacionJugador();
@@ -94,8 +94,9 @@ public class PlayerController : MonoBehaviour
 
     void idle_state()
     {
+        input_esquive();
         attack_input();
-        input_movimiento();
+        avanzar();
     }
 
     void input_movimiento()
@@ -106,8 +107,11 @@ public class PlayerController : MonoBehaviour
         input_vector.x = x;
         input_vector.y = y;
 
-        input_vector = Vector2.ClampMagnitude(input_vector, 1f);
+        input_vector = Vector2.ClampMagnitude(input_vector, 1f);      
+    }
 
+    void avanzar()
+    {
         direction = transform.forward * input_vector.magnitude * aceleracionMovimiento;
     }
 
@@ -155,19 +159,48 @@ public class PlayerController : MonoBehaviour
 
     void attack_input()
     {
-        bool input_attack = Input.GetKeyDown(ataqueGamepad) || Input.GetKeyDown(ataqueTecladoMouse);
-
-        if (input_attack && canAttack)
+        if (Input.GetButtonDown("Attack") && canAttack)
         {
-            estadoJugador = State.ATTACK;
+            estado = State.ATTACK;
             updateAttackAnimation();
         }
     }
     void attack_state()
     {
+        input_esquive();
         attack_input();
     }
 
+    // #---------------- ESQUIVE ----------------#
+
+    void input_esquive()
+    {
+        if (Input.GetButtonDown("Dodge") && canDodge)
+        {
+            Vector2 _input_rodar = input_vector.normalized;
+            if (_input_rodar == Vector2.zero)
+            {
+                _input_rodar = Vector2.up;
+            }
+            float x = _input_rodar.x;
+            float y = _input_rodar.y;
+            Vector3 input_rodar = new Vector3(x, 0, y);
+            input_rodar = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f) * input_rodar;
+            rb.AddForce(impulsoEsquive * input_rodar, ForceMode.Impulse);
+            updateDodgeAnimation(x, y);
+            StartCoroutine(inhabilitarEsquive());
+        }
+    }
+
+    IEnumerator inhabilitarEsquive()
+    {
+        canDodge = false;
+        yield return new WaitForSeconds(tiempoInhabilitacionEsquive);
+        if(estado != State.ATTACK)
+        {
+            canDodge = true;
+        }
+    }
 
     // #---------------- ANIMACIÓN ----------------#
 
@@ -193,19 +226,34 @@ public class PlayerController : MonoBehaviour
         canAttack = true;
     }
 
+    void disableDodge()
+    {
+        canDodge = false;
+    }
+
+    void enableDodge()
+    {
+        canDodge = true;
+    }
+
     public void changeToAttack()
     {
-        estadoJugador = State.ATTACK;
+        estado = State.ATTACK;
+        canAttack = false;
+        canDodge = false;
     }
 
     public void changeToParalysed()
     {
-        estadoJugador = State.PARALYSED;
+        estado = State.PARALYSED;
+        canAttack = true;
+        canDodge = true;
     }
 
     public void changeToIdle()
     {
-        estadoJugador = State.IDLE;
+        estado = State.IDLE;
+        canAttack = true;
     }
 
     void addImpulseToCharacter(float value)
@@ -225,6 +273,13 @@ public class PlayerController : MonoBehaviour
     void updateAttackAnimation()
     {
         animator.SetTrigger("Attack");
+    }
+
+    void updateDodgeAnimation(float x, float y)
+    {
+        animator.SetFloat("Input X", x);
+        animator.SetFloat("Input Y", y);
+        animator.SetTrigger("Dodge");
     }
 
 }

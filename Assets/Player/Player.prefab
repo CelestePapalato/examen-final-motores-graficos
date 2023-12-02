@@ -1323,11 +1323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b04d5bc139ef642ac7c8e32aed909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ataqueTecladoMouse: 323
-  ataqueGamepad: 332
   aceleracionMovimiento: 1400
   velocidadMaxima: 7
   suavizadoDesaceleracion: 5
+  impulsoEsquive: 16
+  tiempoInhabilitacionEsquive: 0.7
   ajustarACamara: 1
   suavizadoDeRotacion: 0.2
 --- !u!95 &8850311893392969889

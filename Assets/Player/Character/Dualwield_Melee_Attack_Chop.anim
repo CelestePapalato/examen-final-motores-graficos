@@ -55441,8 +55441,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.7
+    functionName: enableDodge
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.76666665
     functionName: enableAttackInput
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8
+    functionName: disableDodge
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -55464,6 +55478,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.93333334
     functionName: disableInvulnerability
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: enableDodge
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
