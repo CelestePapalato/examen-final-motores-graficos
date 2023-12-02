@@ -16,6 +16,10 @@ public class ChangePlayerState : StateMachineBehaviour
         {
             player.changeToAttack();
         }
+        else if (stateInfo.IsTag("Dodge"))
+        {
+            player.changeToDodge();
+        }
         else
         {
             player.changeToIdle();
@@ -29,12 +33,14 @@ public class ChangePlayerState : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //   if (stateInfo.tagHash) { }
-    //    PlayerController player = animator.GetComponentInParent<PlayerController>();
-    //    player.changeToIdle();
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        PlayerController player = animator.GetComponent<PlayerController>();
+        if (stateInfo.IsTag("Dodge"))
+        {
+            player.exitDodge();
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

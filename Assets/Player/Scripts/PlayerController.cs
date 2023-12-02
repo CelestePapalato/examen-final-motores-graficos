@@ -206,12 +206,12 @@ public class PlayerController : MonoBehaviour
 
     // #-- Eventos para animaciones --#
 
-    void enableInvulnerability()
+    public void enableInvulnerability()
     {
         health.changeInvulnerability(true, gameObject);
     }
 
-    void disableInvulnerability()
+    public void disableInvulnerability()
     {
         health.changeInvulnerability(false, gameObject);
     }
@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour
     public void changeToAttack()
     {
         estado = State.ATTACK;
+        StopCoroutine(inhabilitarEsquive());
         canAttack = false;
         canDodge = false;
     }
@@ -254,6 +255,17 @@ public class PlayerController : MonoBehaviour
     {
         estado = State.IDLE;
         canAttack = true;
+    }
+
+    public void changeToDodge()
+    {
+        estado = State.PARALYSED;
+        enableInvulnerability();
+    }
+
+    public void exitDodge()
+    {
+        disableInvulnerability();
     }
 
     void addImpulseToCharacter(float value)
