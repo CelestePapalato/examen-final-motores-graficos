@@ -8,16 +8,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - EnemyAttack
   - PlayerAttack
   - EnemyHurtbox
   - PlayerHurtbox
-  - 
-  - 
-  - 
+  - EnemyWander
+  - EnvironmentDamage
+  - Enemy
   - 
   - 
   - 

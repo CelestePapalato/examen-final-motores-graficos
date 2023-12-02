@@ -8,6 +8,9 @@ public class DamageComponent : MonoBehaviour
     public string Note = "Este componente debe ir en el objeto que haga daño, no en el ente.";
 
     [SerializeField]
+    GameObject parent;
+
+    [SerializeField]
     int damage;
     [SerializeField]
     float impulse;
@@ -15,6 +18,11 @@ public class DamageComponent : MonoBehaviour
     public int getDamage()
     {
         return damage;
+    }
+
+    public Vector3 getPosition()
+    {
+        return (parent) ? parent.transform.position : transform.position;
     }
 
     public float getImpulse()

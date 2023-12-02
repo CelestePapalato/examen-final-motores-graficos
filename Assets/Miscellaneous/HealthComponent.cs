@@ -22,7 +22,7 @@ public class HealthComponent : MonoBehaviour
         col = GetComponent<Collider>();
         health = maxHealth;
 
-        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
 
     public void damage(int value)
@@ -39,7 +39,7 @@ public class HealthComponent : MonoBehaviour
             StartCoroutine(invulnerabilityManager());
         }
 
-        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
 
     void heal(int value)
@@ -47,7 +47,7 @@ public class HealthComponent : MonoBehaviour
         health = Mathf.Clamp(health + value, 0, maxHealth);
 
 
-        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
 
     IEnumerator invulnerabilityManager()
@@ -61,6 +61,7 @@ public class HealthComponent : MonoBehaviour
     {
         col.enabled = !value;
 
+        /*
         if (value)
         {
             Debug.Log(rbParent.name + " es invulnerable");
@@ -69,6 +70,7 @@ public class HealthComponent : MonoBehaviour
         {
             Debug.Log(rbParent.name + " ha vuelto a ser vulnerable");
         }
+        */
     }
 
     public void changeInvulnerability(bool value, GameObject caller)
@@ -82,10 +84,14 @@ public class HealthComponent : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         DamageComponent enemy = other.gameObject.GetComponent<DamageComponent>();
+        if (!enemy)
+        {
+            return;
+        }
         int dmg = enemy.getDamage();
         damage(dmg);
         float impulseMagnitude = enemy.getImpulse();
-        damageImpulse(other.transform.position, impulseMagnitude);
+        damageImpulse(enemy.getPosition(), impulseMagnitude);
         damageAnimation(dmg);
     }
 
@@ -96,6 +102,7 @@ public class HealthComponent : MonoBehaviour
         }
         Vector3 currentPosition = rbParent.transform.position;
         Vector3 impulseVector = currentPosition - origin;
+        impulseVector.y = 0;
         impulseVector = impulseVector.normalized;
         rbParent.AddForce(impulseVector * magnitude, ForceMode.Impulse);
     }
@@ -105,6 +112,10 @@ public class HealthComponent : MonoBehaviour
             return;
         }
         float dmgBlend = dmg / maxHealth;
+        if (!CompareTag("Player")) {
+            dmgBlend = Mathf.Clamp(dmgBlend + 0.15f, 0.15f, 1f);
+            dmgBlend *= 0.35f;
+        }
         animatorParent.SetFloat("DamageAmount", dmgBlend);
         animatorParent.SetTrigger("Damage");
     }
