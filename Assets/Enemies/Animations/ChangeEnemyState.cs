@@ -18,6 +18,7 @@ public class ChangeEnemyState : StateMachineBehaviour
         else if (stateInfo.IsTag("Death"))
         {
             enemy.die();
+            SpawnManager.instance.spawnObject("heart", enemy.transform.position + new Vector3(0, 1, 0));
         }
         else
         {

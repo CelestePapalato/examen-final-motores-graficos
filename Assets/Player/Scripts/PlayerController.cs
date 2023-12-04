@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [Range(0f, 0.3f)] float suavizadoDeRotacion;
+    [SerializeField]
+    [Range(0f, 0.3f)] float suavizadoRotacionAtaque;
 
     Vector2 input_vector = Vector2.zero;
 
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
     bool canAttack = true;
     bool canDodge = true;
 
+    float rotacionObjetivoAtaque;
+
     void Start()
     {
         estado = State.IDLE;
@@ -65,7 +69,6 @@ public class PlayerController : MonoBehaviour
                 attack_state();
                 break;                        
         }
-        Debug.Log(rb.velocity.magnitude);
     }
 
     private void FixedUpdate()
@@ -152,6 +155,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void rotacionJugadorDuranteAtaque()
+    {
+        if(estado != State.ATTACK)
+        {
+            return;
+        }
+        if (input_vector != Vector2.zero)
+        {
+            float rotacionActual = transform.eulerAngles.y;            
+            float rotacion = Mathf.SmoothDampAngle(rotacionActual, rotacionObjetivoAtaque, ref smoothDampAngle_currentVelocity, suavizadoRotacionAtaque);
+            rb.MoveRotation(Quaternion.Euler(0f, rotacion, 0f));
+        }
+    }
+
     // #---------------- ATAQUE ----------------#
 
     void attack_input()
@@ -159,8 +176,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Attack") && canAttack)
         {
             estado = State.ATTACK;
-            Vector3 input_ataque = new Vector3(input_vector.x, 0, input_vector.y);
-            input_ataque = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f) * input_ataque;
+            rotacionObjetivoAtaque = Mathf.Atan2(input_vector.x, input_vector.y) * Mathf.Rad2Deg;
+            if (ajustarACamara)
+            {
+                rotacionObjetivoAtaque += cam.transform.eulerAngles.y;
+            }
             updateAttackAnimation();
         }
     }
@@ -265,7 +285,6 @@ public class PlayerController : MonoBehaviour
     public void changeToParalysed()
     {
         estado = State.PARALYSED;
-        canAttack = false;
         canDodge = true;
     }
 

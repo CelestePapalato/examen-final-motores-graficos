@@ -14,13 +14,19 @@ public class HealthComponent : MonoBehaviour
 
     Rigidbody rbParent;
     Animator animatorParent;
+    ParticleSystem particle;
+
+    bool isPlayer = false;
 
     void Start()
     {
         rbParent = GetComponentInParent<Rigidbody>();
         animatorParent = GetComponentInParent<Animator>();
         col = GetComponent<Collider>();
+        particle = GetComponentInChildren<ParticleSystem>();
         health = maxHealth;
+
+        isPlayer = rbParent.CompareTag("Player");
 
         //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
@@ -39,15 +45,19 @@ public class HealthComponent : MonoBehaviour
             StartCoroutine(invulnerabilityManager());
         }
 
-        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
 
     void heal(int value)
     {
         health = Mathf.Clamp(health + value, 0, maxHealth);
 
+        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
 
-        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        if (particle)
+        {
+            particle.Emit(1);
+        }
     }
 
     IEnumerator invulnerabilityManager()
@@ -83,6 +93,16 @@ public class HealthComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Heal"))
+        {
+            if (isPlayer && health < maxHealth && health != 0)
+            {
+                heal(1);
+                Destroy(other.gameObject);
+            }
+            return;
+        }
+
         DamageComponent enemy = other.gameObject.GetComponent<DamageComponent>();
         if (!enemy)
         {

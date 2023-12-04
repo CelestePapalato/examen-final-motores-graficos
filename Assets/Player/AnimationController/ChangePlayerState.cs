@@ -27,17 +27,21 @@ public class ChangePlayerState : StateMachineBehaviour
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(stateInfo.IsTag("Attack"))
+        {
+            PlayerController player = animator.GetComponent<PlayerController>();
+            player.rotacionJugadorDuranteAtaque();
+        }
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        PlayerController player = animator.GetComponent<PlayerController>();
+    {        
         if (stateInfo.IsTag("Dodge"))
         {
+            PlayerController player = animator.GetComponent<PlayerController>();
             player.exitDodge();
         }
     }

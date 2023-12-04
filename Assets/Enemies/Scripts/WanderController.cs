@@ -63,14 +63,19 @@ public class WanderController : MonoBehaviour
 
     void calcularDestino()
     {
+        nextPoint();
+        remainingDistanceExpected = Random.Range(distanciaMin, distanciaMax);
+        estado = State.MOVE;
+    }
+    
+    public void nextPoint()
+    {
         currentPoint++;
-        if(currentPoint >= _puntosDeVigilancia.Count)
+        if (currentPoint >= _puntosDeVigilancia.Count)
         {
             currentPoint = 0;
         }
         navMeshAgent.destination = _puntosDeVigilancia[currentPoint].position;
-        remainingDistanceExpected = Random.Range(distanciaMin, distanciaMax);
-        estado = State.MOVE;
     }
 
     public void detenerWander()
@@ -93,6 +98,11 @@ public class WanderController : MonoBehaviour
                 _puntosDeVigilancia.Add(child);
             }
         }
+    }
+
+    public List<Transform> getPuntos()
+    {
+        return _puntosDeVigilancia;
     }
 
     private void OnTriggerEnter(Collider other)

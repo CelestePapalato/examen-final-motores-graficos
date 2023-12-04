@@ -6,15 +6,32 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     // Constantes
+
+    enum Type { FISICO, DISTANCIA}
+    [SerializeField]
+    [Tooltip("Indica si el enemigo ataca cuerpo a cuerpo o a distancia")]
+    Type tipoDeEnemigo;
+
     [Header("Combate")]
     [SerializeField]
-    float distanciaParaAtacar;
+    [Tooltip("Ángulo en el que debe encontrarse el enemigo para atacar y moverse a velocidad normal")]
+    float anguloEnCamara;
+    [SerializeField]
+    [Tooltip("Modificador de velocidad para cuando el enemigo está fuera de ángulo")]
+    float cambioVelocidadFueraDeAngulo;
+
+    [Header("Enemigo de ataques físicos")]
     [SerializeField]
     float tiempoActualizacionPath;
     [SerializeField]
-    float anguloEnCamara;
+    float distanciaParaAtacar;
+
+    [Header("Enemigo de ataques a distancia")]
     [SerializeField]
-    float cambioVelocidadFueraDeAngulo;
+    [Tooltip("A partir de qué distancia con el jugador el enemigo debe cambiar de posición")]
+    float distanciaMáximaConElJugador;
+    [SerializeField]
+    float frecuenciaAtaque;
 
     float velocidad;
     float velocidadAngular;
