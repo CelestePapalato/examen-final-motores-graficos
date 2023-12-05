@@ -4048,10 +4048,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3541264505144879185, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_Name
       value: Mage

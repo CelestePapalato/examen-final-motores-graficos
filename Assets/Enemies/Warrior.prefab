@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b12baf3a24129a45bafa8bd1f5ce088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistanceToCamera: 50
+  maxDistanceToCamera: 30
 --- !u!1 &7408795432886241248
 GameObject:
   m_ObjectHideFlags: 0
