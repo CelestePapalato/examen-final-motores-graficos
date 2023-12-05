@@ -252,10 +252,12 @@ public class EnemyController : MonoBehaviour
     public void die()
     {
         StopAllCoroutines();
+        CancelInvoke("ataqueDistancia");
         estado = State.DEAD;
         navMeshAgent.isStopped = true;
         wanderController.gameObject.SetActive(false);
         col.enabled = false;
+        Destroy(gameObject, 5);
     }
 
     public void endAttack()

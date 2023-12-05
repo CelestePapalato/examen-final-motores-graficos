@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class HealthComponent : MonoBehaviour
     int maxHealth;
     [SerializeField]
     float invulnerabilityTime;
+    [SerializeField]
+    Slider healthbar;
 
     int health;
     Collider col;
@@ -25,6 +28,7 @@ public class HealthComponent : MonoBehaviour
         animatorParent = GetComponentInParent<Animator>();
         col = GetComponent<Collider>();
         particle = GetComponentInChildren<ParticleSystem>();
+        healthbar = GetComponentInChildren<Slider>();
         health = maxHealth;
 
         if (rbParent)
@@ -41,7 +45,7 @@ public class HealthComponent : MonoBehaviour
     {
         health = Mathf.Clamp(health - value, 0, maxHealth);
 
-        if(health == 0)
+        if (health == 0)
         {
             if (isProjectile)
             {
@@ -54,6 +58,10 @@ public class HealthComponent : MonoBehaviour
         {
             StartCoroutine(invulnerabilityManager());
         }
+
+        if (healthbar) {
+            healthbar.value = (float) health / maxHealth;
+            }
 
         //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
