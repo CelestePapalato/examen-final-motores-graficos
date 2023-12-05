@@ -745,8 +745,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.8
-  m_Speed: 5
-  m_Acceleration: 8
+  m_Speed: 2.5
+  m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -808,11 +808,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoDeEnemigo: 1
   anguloEnCamara: 70
-  cambioVelocidadFueraDeAngulo: 0.4
+  cambioVelocidadFueraDeAngulo: 0.8
   tiempoActualizacionPath: 0.7
   distanciaParaAtacar: 1.5
-  "distanciaM\xE1ximaConElJugador": 6
-  rateAtaque: 5
+  distanciaMinConElJugador: 15
+  frecuenciaAtaque: 4
 --- !u!1 &5421422263196774395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1100,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5811974716522326776
 MonoBehaviour:

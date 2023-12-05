@@ -17,6 +17,7 @@ public class HealthComponent : MonoBehaviour
     ParticleSystem particle;
 
     bool isPlayer = false;
+    bool isProjectile = false;
 
     void Start()
     {
@@ -26,7 +27,12 @@ public class HealthComponent : MonoBehaviour
         particle = GetComponentInChildren<ParticleSystem>();
         health = maxHealth;
 
-        isPlayer = rbParent.CompareTag("Player");
+        if (rbParent)
+        {
+            isPlayer = rbParent.CompareTag("Player");
+        }
+
+        isProjectile = (GetComponentInParent<Projectile>());
 
         //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
@@ -37,6 +43,10 @@ public class HealthComponent : MonoBehaviour
 
         if(health == 0)
         {
+            if (isProjectile)
+            {
+                Destroy(transform.parent.gameObject);
+            }
             deadAnimation();
             setInvulnerability(true);
         }
@@ -45,14 +55,14 @@ public class HealthComponent : MonoBehaviour
             StartCoroutine(invulnerabilityManager());
         }
 
-        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
 
     void heal(int value)
     {
         health = Mathf.Clamp(health + value, 0, maxHealth);
 
-        Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
+        //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
 
         if (particle)
         {

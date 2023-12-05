@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     [Header("Enemigo de ataques a distancia")]
     [SerializeField]
     [Tooltip("A partir de qué distancia con el jugador el enemigo debe cambiar de posición")]
-    float distanciaMáximaConElJugador;
+    float distanciaMinConElJugador;
     [SerializeField]
     float frecuenciaAtaque;
 
@@ -49,12 +49,14 @@ public class EnemyController : MonoBehaviour
     FaceShape faceShape;
 
     // Estados
-    enum State { WANDER, CHASE, ATTACK, PARALYSED, DEAD }
+    enum State { WANDER, CHASE, ATTACK, PARALYSED, ESCAPE, DEAD }
     State estado;
 
     GameObject enemy;
 
     Camera cam;
+
+    bool canAttack = true;
 
     void Start()
     {
@@ -88,32 +90,95 @@ public class EnemyController : MonoBehaviour
             case State.CHASE:
                 chaseState();
                 break;
-            case State.ATTACK:
-                break;
-            case State.PARALYSED:
+            case State.ESCAPE:
+                escapeState();
                 break;
         }
     }
 
     void chaseState()
-    {
-        
+    {        
         float distancia = Vector3.Distance(enemy.transform.position, transform.position);
-        if (!navMeshAgent.pathPending && distancia <= distanciaParaAtacar && meshRenderer.isVisible)
+        if (tipoDeEnemigo == Type.FISICO)
         {
-            updateAttackAnimation();
+            if (!navMeshAgent.pathPending && distancia <= distanciaParaAtacar && meshRenderer.isVisible)
+            {
+                updateAttackAnimation();
+            }
+            
+            if (dentroDeAngulo())
+            {
+                navMeshAgent.speed = velocidad * cambioVelocidadFueraDeAngulo;
+                return;
+            }
+            navMeshAgent.speed = velocidad;
         }
+        if(tipoDeEnemigo == Type.DISTANCIA)
+        {
+            if (distancia <= distanciaMinConElJugador)
+            {
+                estado = State.ESCAPE;
+                navMeshAgent.speed = velocidad;
+                CancelInvoke("ataqueDistancia");
+                canAttack = true;
+                return;
+            }
+            if (navMeshAgent.remainingDistance < 0.5f)
+            {
+                lookAt();
+                if (canAttack)
+                {
+                    canAttack = false;
+                    ataqueDistancia();
+                }            
+            }
+        }
+    }
+
+    void escapeState()
+    {
+        if (navMeshAgent.pathPending)
+        {
+            return;
+        }
+
+        float distancia = Vector3.Distance(enemy.transform.position, transform.position);
+
+        if (distancia > distanciaMinConElJugador)
+        {
+            changeToChase();
+        }
+        else if (navMeshAgent.remainingDistance < 0.5f)
+        {
+            wanderController.nextPoint();
+        }
+        
+    }
+
+    bool dentroDeAngulo()
+    {
         Vector3 camForward = cam.transform.forward;
         camForward.y = 0;
         Vector3 forward = transform.forward;
         forward.y = 0;
         float angle = Mathf.Abs(Vector3.SignedAngle(camForward, forward, Vector3.up));
-        if(angle < 180f - anguloEnCamara)
-        {
-            navMeshAgent.speed = velocidad * cambioVelocidadFueraDeAngulo;
-            return;
-        }
-        navMeshAgent.speed = velocidad;        
+        return angle < 180f - anguloEnCamara;
+    }
+
+    void ataqueDistancia()
+    {
+        updateAttackAnimation();
+        Invoke("ataqueDistancia", frecuenciaAtaque);
+    }
+
+    void lookAt()
+    {
+        Quaternion rotacionActual = transform.rotation;
+        Vector3 pos = enemy.transform.position;
+        pos.y = transform.position.y;
+        transform.LookAt(pos);
+        Quaternion rotacionObjetivo = transform.rotation;
+        transform.rotation = Quaternion.Slerp(rotacionActual, rotacionObjetivo, 1.4f * Time.deltaTime);
     }
 
     IEnumerator actualizarPath()
@@ -143,6 +208,7 @@ public class EnemyController : MonoBehaviour
         enemy = null;
         faceShape.happyFace(100);
         StopCoroutine(actualizarPath());
+        CancelInvoke("ataqueDistancia");
         estado = State.WANDER;
     }
 
@@ -161,6 +227,12 @@ public class EnemyController : MonoBehaviour
         faceShape.angryFace(100);
         estado = State.ATTACK;
         navMeshAgent.speed = 0;
+        if(tipoDeEnemigo == Type.DISTANCIA)
+        {
+            GameObject obj = SpawnManager.instance.spawnObject("magic", transform.position + new Vector3(0f, 0.7f, 0f));
+            Projectile proyectile = obj.GetComponent<Projectile>();
+            proyectile.setObjective(enemy);
+        }
     }
 
     void changeToChase()
@@ -168,7 +240,10 @@ public class EnemyController : MonoBehaviour
         if (enemy)
         {
             estado = State.CHASE;
-            StartCoroutine(actualizarPath());
+            if (tipoDeEnemigo == Type.FISICO)
+            {
+                StartCoroutine(actualizarPath());
+            }
             wanderController.detenerWander();
             faceShape.angryFace(25);
         }
