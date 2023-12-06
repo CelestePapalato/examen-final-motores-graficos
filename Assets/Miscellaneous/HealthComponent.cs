@@ -29,6 +29,8 @@ public class HealthComponent : MonoBehaviour
         col = GetComponent<Collider>();
         particle = GetComponentInChildren<ParticleSystem>();
         healthbar = GetComponentInChildren<Slider>();
+        healthbar.gameObject.SetActive(true);
+
         health = maxHealth;
 
         if (rbParent)
