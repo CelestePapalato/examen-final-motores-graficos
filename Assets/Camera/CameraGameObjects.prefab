@@ -254,7 +254,7 @@ MonoBehaviour:
   sensibilidadX: 200
   sensibilidadY: 200
   rotationSmoothing: 0.084
-  minAnguloVertical: -20
+  minAnguloVertical: 0
   maxAnguloVertical: 40
 --- !u!1 &7431048433597782046
 GameObject:

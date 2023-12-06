@@ -215,6 +215,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &469972622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7872021912120586100, guid: 473d84e70afefe34685c679f65fed58d, type: 3}
+  m_PrefabInstance: {fileID: 1311305196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1248726826
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +454,14 @@ PrefabInstance:
     - target: {fileID: 4999790514875140327, guid: 70205b35516359c449d8287aa232c7d9, type: 3}
       propertyPath: m_Name
       value: CameraGameObjects
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047554528148979593, guid: 70205b35516359c449d8287aa232c7d9, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 469972622}
+    - target: {fileID: 8780268548671218164, guid: 70205b35516359c449d8287aa232c7d9, type: 3}
+      propertyPath: far clip plane
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
