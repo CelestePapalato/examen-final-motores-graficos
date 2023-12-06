@@ -1384,6 +1384,7 @@ MonoBehaviour:
   tiempoMaxParaReposicionarse: 4
   distanciaMin: 1
   distanciaMax: 3
+  randomizarDestino: 1
 --- !u!1 &7041730622344476358
 GameObject:
   m_ObjectHideFlags: 0

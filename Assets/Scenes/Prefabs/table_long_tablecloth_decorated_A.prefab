@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: table_long_tablecloth_decorated_A
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae158814273414542b45ccbacd9a77da, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -19,6 +19,8 @@ public class WanderController : MonoBehaviour
     float distanciaMin;
     [SerializeField]
     float distanciaMax;
+    [SerializeField]
+    bool randomizarDestino = false;
 
     Vector3 destino = Vector3.zero;
 
@@ -58,14 +60,27 @@ public class WanderController : MonoBehaviour
         estado = State.WAIT;
         float time = Random.Range(tiempoMinParaReposicionarse, tiempoMaxParaReposicionarse);
         yield return new WaitForSeconds(time);
-        calcularDestino();
+        if (randomizarDestino)
+        {
+            randomizePoint();
+        }
+        else
+        {
+            calcularDestino();
+        }
+        remainingDistanceExpected = Random.Range(distanciaMin, distanciaMax);
+        estado = State.MOVE;
+    }
+
+    void randomizePoint()
+    {
+        currentPoint = Random.Range(0, _puntosDeVigilancia.Count);
+        navMeshAgent.destination = _puntosDeVigilancia[currentPoint].position;
     }
 
     void calcularDestino()
     {
         nextPoint();
-        remainingDistanceExpected = Random.Range(distanciaMin, distanciaMax);
-        estado = State.MOVE;
     }
     
     public void nextPoint()

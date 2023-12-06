@@ -1011,10 +1011,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntosDeVigilancia: {fileID: 0}
-  tiempoMinParaReposicionarse: 2
-  tiempoMaxParaReposicionarse: 4
+  tiempoMinParaReposicionarse: 1
+  tiempoMaxParaReposicionarse: 3
   distanciaMin: 1
   distanciaMax: 3
+  randomizarDestino: 1
 --- !u!1 &5735584095348187027
 GameObject:
   m_ObjectHideFlags: 0
