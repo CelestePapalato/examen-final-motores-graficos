@@ -29,7 +29,6 @@ public class HealthComponent : MonoBehaviour
         col = GetComponent<Collider>();
         particle = GetComponentInChildren<ParticleSystem>();
         healthbar = GetComponentInChildren<Slider>();
-        healthbar.gameObject.SetActive(true);
 
         health = maxHealth;
 
@@ -61,9 +60,7 @@ public class HealthComponent : MonoBehaviour
             StartCoroutine(invulnerabilityManager());
         }
 
-        if (healthbar) {
-            healthbar.value = (float) health / maxHealth;
-            }
+        updateGUI();
 
         //Debug.Log("Objeto: " + rbParent.name + " | Vida: " + health);
     }
@@ -77,6 +74,16 @@ public class HealthComponent : MonoBehaviour
         if (particle)
         {
             particle.Emit(1);
+        }
+
+        updateGUI();
+    }
+
+    void updateGUI()
+    {
+        if (healthbar)
+        {
+            healthbar.value = (float)health / maxHealth;
         }
     }
 

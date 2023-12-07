@@ -885,7 +885,7 @@ MonoBehaviour:
   cambioVelocidadFueraDeAngulo: 0.8
   tiempoActualizacionPath: 0.7
   distanciaParaAtacar: 1.5
-  distanciaMinConElJugador: 15
+  distanciaMinConElJugador: 6
   frecuenciaAtaque: 4
 --- !u!1 &5348697948086345816
 GameObject:
