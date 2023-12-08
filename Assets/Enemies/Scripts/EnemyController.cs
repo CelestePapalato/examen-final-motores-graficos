@@ -257,6 +257,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.isStopped = true;
         wanderController.gameObject.SetActive(false);
         col.enabled = false;
+        GameManager.instance.enemigoDerrotado();
         Destroy(gameObject, 5);
     }
 

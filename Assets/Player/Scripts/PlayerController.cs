@@ -310,6 +310,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(transform.forward * value, ForceMode.Impulse);
     }
 
+    void terminarJuego()
+    {
+        GameManager.instance.jugadorPerdio();
+    }
+
     // # ---------------------------- #
 
     void updateMovementAnimationBlend()

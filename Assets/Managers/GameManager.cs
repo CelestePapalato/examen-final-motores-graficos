@@ -1,18 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameManager instance;
+    [SerializeField]
+    TMP_Text textoContador;
+    [SerializeField]
+    Canvas perder;
+    [SerializeField]
+    Canvas ganar;
+
+    int cantEnemigos;
+    int cantEnemigosDerrotados = 0;
+
+
     void Start()
     {
+        instance = this;
+        cantEnemigos = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        perder.enabled = false;
+        ganar.enabled = false;
+    }
         
+    void updateContador()
+    {
+        textoContador.text = cantEnemigosDerrotados + " / " + cantEnemigos;
     }
 
-    // Update is called once per frame
-    void Update()
+    void cumplioCondicion()
     {
-        
+        if(cantEnemigosDerrotados >= cantEnemigos)
+        {
+            Time.timeScale = 0;
+            textoContador.enabled = false;
+            ganar.enabled = true;
+        }
+    }
+
+    public void irAlMenu()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void enemigoDerrotado()
+    {
+        cantEnemigosDerrotados++;
+        updateContador();
+        cumplioCondicion();
+    }
+
+    public void jugadorPerdio()
+    {
+        Time.timeScale = 0;
+        textoContador.enabled = false;
+        perder.enabled = true;
     }
 }
