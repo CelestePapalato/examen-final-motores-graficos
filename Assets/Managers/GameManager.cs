@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         cantEnemigos = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        updateContador();
         perder.enabled = false;
         ganar.enabled = false;
     }
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void irAlMenu()
     {
         Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     public void enemigoDerrotado()
