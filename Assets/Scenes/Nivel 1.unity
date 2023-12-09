@@ -136,6 +136,10 @@ PrefabInstance:
       value: Minion (10)
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -215,6 +219,10 @@ PrefabInstance:
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_Name
       value: Mage (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_TagString
@@ -508,7 +516,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 5.5e-44, z: 1.0606e-41, w: 9.1835e-41}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.14e-43, z: 1.0371e-41, w: 1.0762e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -802,6 +810,10 @@ PrefabInstance:
       value: Mage (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -875,6 +887,10 @@ PrefabInstance:
       value: Mage (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -938,6 +954,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -1011,6 +1031,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557389065906291245, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: puntosDeVigilancia
@@ -1739,35 +1763,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3054880678411896206, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.2854e-41
+      value: 1.399e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3054880678411896206, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 3054880678411896206, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 6e-44
+      value: 4.5e-44
       objectReference: {fileID: 0}
     - target: {fileID: 3054880678411896206, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 7.8e-44
+      value: 1.5833e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6109668518761824488, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: 4.1003012e-19
       objectReference: {fileID: 0}
     - target: {fileID: 6109668518761824488, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 6109668518761824488, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.087769e-39
+      value: 2.4e-44
       objectReference: {fileID: 0}
     - target: {fileID: 6109668518761824488, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 3e-45
+      value: 1.513e-41
       objectReference: {fileID: 0}
     - target: {fileID: 8518313111248140543, guid: 3b240eea953414145b227c602ac87412, type: 3}
       propertyPath: m_Name
@@ -2086,6 +2110,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -2882,6 +2910,10 @@ PrefabInstance:
       value: Warrior (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -3254,6 +3286,10 @@ PrefabInstance:
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_Name
       value: Warrior (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_TagString
@@ -4269,6 +4305,10 @@ PrefabInstance:
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_Name
       value: Warrior (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_TagString
@@ -6722,6 +6762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3397280753687506923, guid: 473d84e70afefe34685c679f65fed58d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3477977567684350160, guid: 473d84e70afefe34685c679f65fed58d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.0000059764134
@@ -7161,6 +7205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7468421355606941403, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 446.8
@@ -7350,6 +7398,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -8065,6 +8117,10 @@ PrefabInstance:
       value: Minion (8)
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -8144,6 +8200,10 @@ PrefabInstance:
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_Name
       value: Mage (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_TagString
@@ -8824,6 +8884,10 @@ PrefabInstance:
       value: Minion (4)
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -8969,7 +9033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 9.686e-42
+      value: 1.6114618e-38
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.x
@@ -8977,11 +9041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 5.62e-43
+      value: 6.3e-44
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 6.733e-42
+      value: 3.959e-42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13485,6 +13549,10 @@ PrefabInstance:
       value: Minion (6)
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -13728,6 +13796,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -14088,6 +14160,10 @@ PrefabInstance:
       value: Warrior (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -14217,6 +14293,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -14431,6 +14511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5811974716522326776, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: puntosDeVigilancia
       value: 
@@ -14491,6 +14575,10 @@ PrefabInstance:
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_Name
       value: Minion (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441937716311253454, guid: 1e0723ca3b49299479f580baa02aecd5, type: 3}
       propertyPath: m_TagString
@@ -16768,6 +16856,10 @@ PrefabInstance:
       value: Warrior (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596710459249980690, guid: 9d3b5aa6ea36f8342a3c3e0a1002f0dc, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -17019,6 +17111,10 @@ PrefabInstance:
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_Name
       value: Mage (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4051589642932673348, guid: 4afbaefc1daac5c43a7e96ff85711f77, type: 3}
       propertyPath: m_TagString
@@ -18197,19 +18293,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.3326e-41
+      value: -2.9961923e-28
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 6e-44
+      value: 1.7e-44
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 2.4e-44
+      value: 1.3258e-41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18648,7 +18744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 9.1835e-41
+      value: 1.2914e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.x
@@ -18656,11 +18752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 4.75e-43
+      value: 2e-44
       objectReference: {fileID: 0}
     - target: {fileID: 3683318638813482888, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1.0288e-41
+      value: 1.3266e-41
       objectReference: {fileID: 0}
     - target: {fileID: 8843341687629069058, guid: e112753d26c4c184289640c8e129803f, type: 3}
       propertyPath: m_StaticEditorFlags
