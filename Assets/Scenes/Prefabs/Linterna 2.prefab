@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6241889680387354739}
   - component: {fileID: 7152014000716431480}
   - component: {fileID: 2218700496440715866}
-  - component: {fileID: 4794220418598315832}
+  - component: {fileID: 5298216603005335634}
   m_Layer: 0
   m_Name: Linterna 2
   m_TagString: Untagged
@@ -179,8 +179,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4794220418598315832
-CapsuleCollider:
+--- !u!135 &5298216603005335634
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -197,8 +197,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
