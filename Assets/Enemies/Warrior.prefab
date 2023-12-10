@@ -1739,7 +1739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc124c8000b3a8d4bb4e62231cf7254d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   invulnerabilityTime: 0.5
   healthbar: {fileID: 0}
 --- !u!1 &8916136483555562993

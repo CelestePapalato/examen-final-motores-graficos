@@ -1327,7 +1327,7 @@ Transform:
   m_GameObject: {fileID: 232105620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -48.9558, y: 2.765, z: 135.6369}
+  m_LocalPosition: {x: -48.959095, y: 2.765, z: 135.63654}
   m_LocalScale: {x: 32.012066, y: 7, z: 150.89844}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15197,7 +15197,7 @@ Transform:
   m_GameObject: {fileID: 1669879340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0746, y: -0, z: 52.0392}
+  m_LocalPosition: {x: 4.0746, y: 0, z: 52.038284}
   m_LocalScale: {x: 55, y: 1, z: 45.40606}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17195,6 +17195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoContador: {fileID: 508374903}
+  textoEnemigosDerrotados: {fileID: 981142298}
   perder: {fileID: 338506514}
   ganar: {fileID: 1724187017}
 --- !u!1001 &1921744639
@@ -18630,7 +18631,7 @@ Transform:
   m_GameObject: {fileID: 2119157638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.0949, y: 2.765, z: 112.58}
+  m_LocalPosition: {x: 26.095541, y: 2.765, z: 112.454025}
   m_LocalScale: {x: 29.787712, y: 7, z: 75.42471}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TMP_Text textoContador;
     [SerializeField]
+    TMP_Text textoEnemigosDerrotados;
+    [SerializeField]
     Canvas perder;
     [SerializeField]
     Canvas ganar;
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         textoContador.enabled = false;
+        textoEnemigosDerrotados.text = "" + cantEnemigosDerrotados;
         perder.enabled = true;
     }
 }
