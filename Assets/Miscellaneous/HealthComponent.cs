@@ -73,7 +73,9 @@ public class HealthComponent : MonoBehaviour
 
         if (particle)
         {
+            particle.Play();
             particle.Emit(1);
+            particle.Stop();
         }
 
         updateGUI();
